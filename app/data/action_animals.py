@@ -8,7 +8,7 @@ def remove_animal(anim_index: int) -> str:
     animal = animals.pop(anim_index)
 
     with open(list_files.ANIMALS, "w", encoding="utf-8") as file:
-        json.dump(animal, file)
+        json.dump(animals, file)
 
     msg = f"Тварину '{animal}' успішно видалено."
     return msg
