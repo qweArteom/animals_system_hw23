@@ -26,6 +26,17 @@ async def show_animals(message: Message, state: FSMContext):
         text="Список тварин на лікуванні",
         keyboard=keyboard
     )
+    
+@animal_router.message(F.text == "Показати список вилікуваних тварин")
+async def show_animals(message: Message, state: FSMContext):
+    animals = open_files.get_cured_animal()
+    keyboard = build_animals_keyboard(animals)
+    await edit_or_answer(
+        message=message,
+        text="Показати список вилікуваних тварин",
+        keyboard=keyboard
+    )
+
 
 
 @animal_router.callback_query(F.data.startswith("animal_"))

@@ -6,7 +6,7 @@ from app.data import list_files
 
 if not os.path.exists(list_files.ANIMALS):
     with open(list_files.ANIMALS, "w", encoding="utf-8") as file:
-        json.dump(["Пушок", "Мурчик", "Сніжок"], file)
+        json.dump([], file)
 
 if not os.path.exists(list_files.CURED_ANIMAL):
     with open(list_files.CURED_ANIMAL, "w", encoding="utf-8") as file:
