@@ -27,7 +27,7 @@ def cured_animals(anim_index: int) -> str:
     with open(list_files.CURED_ANIMAL, "w", encoding="utf-8") as file:
         json.dump(cured_animals, file)
 
-    msg = f"Товар '{animal}' успішно продано. Дякую за покупку."
+    msg = f"Тварину '{animal}' успішно вилікувано. Дякую за співпрацю."
     return msg
 
 
