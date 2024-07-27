@@ -31,7 +31,7 @@ async def show_animals(message: Message, state: FSMContext):
 @animal_router.callback_query(F.data.startswith("animal_"))
 async def animal_actions(call_back: CallbackQuery, state: FSMContext):
     anim_index = int(call_back.data.split("_")[-1])
-    animal = open_files.get_animals(anim_index)
+    animal = open_files.get_animal(anim_index)
     keyboard = build_animal_actions_keyboard(anim_index)
     await edit_or_answer(
         message=call_back.message,
@@ -48,6 +48,18 @@ async def remove_animal(call_back: CallbackQuery, state: FSMContext):
         message=call_back.message,
         text=msg
     )
+
+
+@animal_router.callback_query(F.data.startswith("cured_animal_"))
+async def cured_animal(call_back: CallbackQuery, state: FSMContext):
+    anim_index = int(call_back.data.split("_")[-1])
+    msg = action_animals.cured_animals(anim_index)
+    await edit_or_answer(
+        message=call_back.message,
+        text=msg
+    )
+
+
 
 @animal_router.message(F.text == "Додати нову тварину")
 async def add_animal(message: Message, state: FSMContext):
